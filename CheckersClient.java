@@ -1,5 +1,3 @@
-// CheckersClient.java
-
 import java.io.*;
 import java.net.*;
 
@@ -18,13 +16,20 @@ public class CheckersClient {
 
                 if (response.startsWith("Welcome")) {
                     System.out.println("Waiting for other player to join...");
-                
-                    System.out.print("Your move: ");
-                    String move = consoleReader.readLine();
-                    out.println(move);
+                } else if (response.startsWith("Current Board:")) {
+                    // Print the received board
+                    System.out.println(response);
 
-                    if (move.equalsIgnoreCase("exit")) {
-                        break;
+                    if (response.contains("Player 1")) {
+                        // Prompt player 1 to make a move
+                        System.out.print("Your move: ");
+                        String move = consoleReader.readLine();
+                        out.println(move);
+                    } else if (response.contains("Player 2")) {
+                        // Prompt player 2 to make a move
+                        System.out.print("Your move: ");
+                        String move = consoleReader.readLine();
+                        out.println(move);
                     }
                 }
             }
@@ -35,3 +40,4 @@ public class CheckersClient {
         }
     }
 }
+

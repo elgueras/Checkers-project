@@ -109,6 +109,42 @@ public class Board {
         }
     }
 
+    public void movePiece(int fromRow, int fromCol, int toRow, int toCol) {
+        // Get the piece at the source position
+        Piece piece = board[fromRow][fromCol];
+    
+        // Remove the piece from the source position
+        board[fromRow][fromCol] = null;
+    
+        // Place the piece at the destination position
+        board[toRow][toCol] = piece;
+    
+        // Update the row and column of the moved piece
+        piece.setRow(toRow);
+        piece.setCol(toCol);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("   0 1 2 3 4 5 6 7\n");
+        for (int i = 0; i < 8; i++) {
+            sb.append(i).append(" ");
+            for (int j = 0; j < 8; j++) {
+                Piece piece = board[i][j];
+                if (piece == null) {
+                    sb.append("|-");
+                } else {
+                    sb.append("|").append(piece.getColorAsString());
+                }
+            }
+            sb.append("|\n");
+        }
+        return sb.toString();
+    }
+
+    
+
 }
 
 

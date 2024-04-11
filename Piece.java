@@ -71,5 +71,16 @@ public class Piece {
         }
     }
 
+    public String getColorAsString() {
+        if (color == Color.BLACK) {
+            return "X";
+        } else if (color == Color.WHITE) {
+            return "O";
+        } else {
+            return "-";
+        }
+    }
+    
+
 
 }
