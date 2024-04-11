@@ -6,7 +6,7 @@ import java.net.*;
 public class CheckersServer {
     public static void main(String[] args) {
         Board board = new Board();
-        board.printBoard(board.getBoard());
+        board.printBoard();
 
         try {
             @SuppressWarnings("resource")

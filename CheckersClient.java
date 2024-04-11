@@ -18,7 +18,7 @@ public class CheckersClient {
 
                 if (response.startsWith("Welcome")) {
                     System.out.println("Waiting for other player to join...");
-                } else {
+                
                     System.out.print("Your move: ");
                     String move = consoleReader.readLine();
                     out.println(move);
