@@ -14,13 +14,5 @@ public class MoveProcessor {
     }
 
 
-    // Method to check if a move is valid
-    private static boolean isValidMove(int fromRow, int fromCol, int toRow, int toCol, Board board) {
-        // Implement your move validation logic here
-        // For example, check if the move is within the bounds of the board and follows the rules of the game
-        // You can also check if the destination cell is empty or if the piece can move to that cell, etc.
-        // Return true if the move is valid, false otherwise
-        // This is a placeholder method; replace it with your actual move validation logic
-        return true;
-    }
+ 
 }
