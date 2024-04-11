@@ -4,7 +4,9 @@ import java.net.*;
 public class CheckersServer {
     public static void main(String[] args) {
         Board board = new Board();
+
         board.printBoard();
+
 
         try {
             @SuppressWarnings("resource")
@@ -25,6 +27,7 @@ public class CheckersServer {
 
             player1Out.println("Welcome, you are Player 1.");
             player2Out.println("Welcome, you are Player 2.");
+            // System.out.println(board.printBoard(board));
 
             while (true) {
                 // Send current board to both players

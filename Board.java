@@ -41,20 +41,27 @@ public class Board {
     /**
      * Prints the current state of the board
      */
+
     public void printBoard() {
         System.out.println("   0 1 2 3 4 5 6 7");
         for (int i = 0; i < 8; i++) {
-            System.out.print(i + " ");
+            s.append(i + " ");
+            // System.out.print(i + " ");
             for (int j = 0; j < 8; j++) {
+
                 Piece piece = board[i][j];
                 if (piece == null) {
                     System.out.print("|-");
                 } else {
                     System.out.print("|" + piece.toString());
                 }
+
             }
-            System.out.println("|");
+            s.append("|\n");
+            //System.out.println("|");
         }
+        return s.toString();
+
     }
 
     public Piece[][] getBoard() {
