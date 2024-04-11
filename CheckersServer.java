@@ -6,6 +6,7 @@ import java.net.*;
 public class CheckersServer {
     public static void main(String[] args) {
         Board board = new Board();
+        board.buildBoard();
         board.printBoard(board.getBoard());
 
         try {
@@ -27,6 +28,7 @@ public class CheckersServer {
 
             player1Out.println("Welcome, you are Player 1.");
             player2Out.println("Welcome, you are Player 2.");
+            // System.out.println(board.printBoard(board));
 
             while (true) {
                 // Game logic goes here
