@@ -4,7 +4,7 @@ import java.net.*;
 public class CheckersClient {
     public static void main(String[] args) {
         try {
-            Socket socket = new Socket("localhost", 12345);
+            Socket socket = new Socket("localhost", 8080);
             BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
 
@@ -12,11 +12,7 @@ public class CheckersClient {
 
             String response;
             while ((response = in.readLine()) != null) {
-                System.out.println(response);
-
-                if (response.startsWith("Welcome")) {
-                    System.out.println("Waiting for other player to join...");
-                } else if (response.startsWith("Current Board:")) {
+                if (response.startsWith("Current Board:")) {
                     // Print the received board
                     System.out.println(response);
 
@@ -31,6 +27,9 @@ public class CheckersClient {
                         String move = consoleReader.readLine();
                         out.println(move);
                     }
+                } else {
+                    // Print other messages from the server
+                    System.out.println(response);
                 }
             }
 
@@ -40,4 +39,3 @@ public class CheckersClient {
         }
     }
 }
-

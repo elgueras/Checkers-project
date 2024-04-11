@@ -5,12 +5,12 @@ public class CheckersServer {
     public static void main(String[] args) {
         Board board = new Board();
 
-        board.printBoard();
+        System.out.println(board.boardToString(false));
 
 
         try {
             @SuppressWarnings("resource")
-            ServerSocket serverSocket = new ServerSocket(12345);
+            ServerSocket serverSocket = new ServerSocket(8080);
             System.out.println("Server started. Waiting for players...");
 
             Socket player1Socket = serverSocket.accept();
