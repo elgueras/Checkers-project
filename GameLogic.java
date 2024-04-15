@@ -7,7 +7,7 @@ public class GameLogic {
 
 
 
-    //method for checking jump
+    //method for checking jump -- implemented in Board.Java and called by MoveProcessor.java
 
 
 

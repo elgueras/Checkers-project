@@ -2,7 +2,6 @@ import java.io.*;
 import java.util.Arrays;
 
 
-
 public class Board {
 
     // The 2D array of Piece objects that represents the checkers board
@@ -125,6 +124,37 @@ public class Board {
         // Update the row and column of the moved piece
         piece.setRow(toRow);
         piece.setCol(toCol);
+    }
+
+    public void jumpPiece(int fromRow, int fromCol, int toRow, int toCol) {
+        Piece piece  = board[fromRow][fromCol];
+
+        // remove piece from source pos
+        board[fromRow][fromCol] = null;
+
+        // place piece at new destination pos
+        board[toRow][toCol] = piece;
+
+        // update row and column of new piece in board
+        piece.setRow(toRow);
+        piece.setCol(toCol);
+
+        // remove jumped piece from board
+
+        // jumping up left
+        if (fromRow > toRow && fromCol > toCol) {
+            board[fromRow - 1][fromCol - 1] = null;
+        // jumping up right
+        } else if (fromRow > toRow && fromCol < toCol) {
+            board[fromRow - 1][fromCol + 1] = null;
+        // jumping down left
+        } else if (fromRow < toRow && fromCol > toCol) {
+            board[fromRow + 1][fromCol - 1] = null;
+        // jumping down right
+        } else {
+            board[fromRow + 1][fromCol + 1] = null;
+        }
+
     }
 
     @Override
