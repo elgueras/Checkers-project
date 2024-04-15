@@ -27,18 +27,19 @@ public class CheckersServer {
 
             player1Out.println("Welcome, you are Player 1.");
             player2Out.println("Welcome, you are Player 2.");
-            // System.out.println(board.printBoard(board));
+            
+            // Send initial board to both players
+            player1Out.println("Current Board:");
+            player1Out.println(board.boardToString(true));
+        
+            player2Out.println("Current Board:");
+            player2Out.println(board.boardToString(false));
+            
 
             while (true) {
-                // Send current board to both players
-                player1Out.println("Current Board:");
-                player1Out.println(board.boardToString(true));
-            
-                player2Out.println("Current Board:");
-                player2Out.println(board.boardToString(false));
-            
+                
                 // Prompt player 1 to make a move
-                player1Out.println("Player 1, make your move (fromRow fromCol toRow toCol): ");
+                player1Out.println("Player 1, make your move ( (move OR jump) fromRow fromCol toRow toCol): ");
             
                 // Receive move from player 1
                 String moveFromPlayer1 = player1In.readLine();
@@ -46,6 +47,8 @@ public class CheckersServer {
                 
                 // Process move from player 1
                 MoveProcessor.processMove(moveFromPlayer1, board);
+
+                // Check if game is over -- not yet implemented 
             
                 // Send updated board to Player 2
                 player2Out.println("Current Board:");
@@ -60,6 +63,8 @@ public class CheckersServer {
                 
                 // Process move from player 2
                 MoveProcessor.processMove(moveFromPlayer2, board);
+
+                // Check if game is over -- not yet implemented 
             
                 // Send updated board to Player 1
                 player1Out.println("Current Board:");
