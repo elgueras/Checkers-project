@@ -8,6 +8,7 @@ public class Board {
     private Piece[][] board;
 
     // Constructor
+    // Constructor
     public Board() {
         board = new Piece[8][8];
         
@@ -23,6 +24,7 @@ public class Board {
             for (int col = 0; col < 8; col++) {
                 if ((row + col) % 2 == 0) {
                     board[row][col] = new Piece(Piece.Color.BLACK, "X", row, col);
+                    System.out.println("Initialized piece at (" + row + ", " + col + "): " + board[row][col]);
                 }
             }
         }
@@ -31,11 +33,13 @@ public class Board {
         for (int row = 5; row < 8; row++) {
             for (int col = 0; col < 8; col++) {
                 if ((row + col) % 2 == 0) {
-                    board[row][col] = new Piece(Piece.Color.WHITE, "0", row, col);
+                    board[row][col] = new Piece(Piece.Color.WHITE, "O", row, col);
+                    System.out.println("Initialized piece at (" + row + ", " + col + "): " + board[row][col]);
                 }
             }
         }
     }
+
 
     /**
      * Prints the current state of the board
@@ -64,14 +68,9 @@ public class Board {
     }
 
     public Piece getPiece(int row, int col) {
-        // Check if the row and column are within the bounds of the board
-        if (row >= 0 && row < 8 && col >= 0 && col < 8) {
-            // Return the piece at the specified row and column
-            return board[row][col];
-        }
-
-        return null;
+        return board[row][col]; // Assuming board is a 2D array of Piece objects
     }
+    
 
     public void setPiece(int row, int col, Piece piece) {
         // Check if the row and column are within the bounds of the board
@@ -86,7 +85,7 @@ public class Board {
         for (int col = 0; col < 8; col++) {
             Piece piece = getPiece(0, col);
             if (piece != null && piece.getColor() == Piece.Color.WHITE) {
-                setPiece(0, col, new Piece(Piece.Color.WHITE_KING, "0", 0, col));
+                setPiece(0, col, new Piece(Piece.Color.WHITE_KING, "O", 0, col));
             }
         }
     
@@ -126,6 +125,8 @@ public class Board {
         piece.setCol(toCol);
     }
 
+    // Inside the Board class
+
     public void jumpPiece(int fromRow, int fromCol, int toRow, int toCol) {
         Piece piece  = board[fromRow][fromCol];
 
@@ -154,8 +155,8 @@ public class Board {
         } else {
             board[fromRow + 1][fromCol + 1] = null;
         }
-
     }
+
 
     @Override
     public String toString() {
@@ -196,11 +197,30 @@ public class Board {
         for (int i = 5; i < 8; i++) {
             sb.append(i).append(" ");
             for (int j = 0; j < 8; j++) {
-                sb.append((i + j) % 2 == 0 ? "|-" : "|0");
+                sb.append((i + j) % 2 == 0 ? "|-" : "|O");
             }
             sb.append("|\n");
         }
         return sb.toString();
+    }
+
+    public static void main(String[] args) {
+        // Create a new board
+        Board board = new Board();
+
+        board.printBoard(board.getBoard());
+
+        // Retrieve pieces using coordinates
+        Piece pieceAt00 = board.getPiece(0, 0);
+        Piece pieceAt50 = board.getPiece(5, 0);
+        Piece pieceAt44 = board.getPiece(4, 4);
+        Piece pieceAt76 = board.getPiece(7, 6);
+
+        // Print information about the retrieved pieces
+        System.out.println("Piece at (0, 0): " + pieceAt00);
+        System.out.println("Piece at (5, 1): " + pieceAt50);
+        System.out.println("Piece at (4, 4): " + pieceAt44);
+        System.out.println("Piece at (7, 6): " + pieceAt76);
     }
     
         

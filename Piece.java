@@ -64,7 +64,7 @@ public class Piece {
     public String toString() {
         if (type.equals("X")) {
             return "X";  // Black piece representation
-        } else if (type.equals("0")) {
+        } else if (type.equals("O")) {
             return "O";  // White piece representation
         } else {
             return "-";  // Empty cell representation

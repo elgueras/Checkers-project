@@ -1,16 +1,27 @@
 public class MoveProcessor {
 
-    // Inside the MoveProcessor class
-    public static void processMove(String move, Board board) {
-        // Parse move string into (move or jump), fromRow, fromCol, toRow, toCol
-        String[] parts = move.split(" ");
+    public static void processMove(String moveString, Board board) {
+        // Parse the moveString into action and coordinates
+        String[] parts = moveString.split(" ");
         String action = parts[0];
         int fromRow = Integer.parseInt(parts[1]);
         int fromCol = Integer.parseInt(parts[2]);
         int toRow = Integer.parseInt(parts[3]);
         int toCol = Integer.parseInt(parts[4]);
-
-
+    
+        System.out.println("Received move: " + action + " from (" + fromRow + ", " + fromCol + ") to (" + toRow + ", " + toCol + ")");
+    
+        // Get the piece at the source position
+        Piece piece = board.getPiece(fromRow, fromCol);
+    
+        // Print out the piece and its color for debugging
+        System.out.println("Piece at source position: " + piece + ", Color: " + piece.getColor());
+    
+        // Check if the source position contains a piece
+        if (piece == null) {
+            throw new IllegalArgumentException("There is no piece to move at the specified position.");
+        }
+    
         // Move the piece on the board
         if (action.equalsIgnoreCase("move")) {
             board.movePiece(fromRow, fromCol, toRow, toCol);
@@ -19,9 +30,6 @@ public class MoveProcessor {
         } else {
             throw new IllegalArgumentException("Unknown action " + action);
         }
-       
     }
-
-
- 
+    
 }
