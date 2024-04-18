@@ -62,8 +62,7 @@ class GameHandler implements Runnable {
             player1Out.println("Current Board:");
             player1Out.println(board.toString());
 
-            player2Out.println("Current Board:");
-            player2Out.println(board.toString());
+            
 
             while (true) {
                 // Inside the game loop where moves are processed
@@ -77,7 +76,7 @@ class GameHandler implements Runnable {
                 player2Out.println(board.toString());
 
                 // Prompt player 2 to make a move
-                player2Out.println("Player 2, make your move (fromRow fromCol toRow toCol): ");
+                //player2Out.println("Player 2, make your move (fromRow fromCol toRow toCol): ");
 
                 // Receive move from player 2
                 String moveFromPlayer2 = player2In.readLine();
