@@ -8,7 +8,6 @@ public class Board {
     private Piece[][] board;
 
     // Constructor
-    // Constructor
     public Board() {
         board = new Piece[8][8];
         
@@ -24,7 +23,7 @@ public class Board {
             for (int col = 0; col < 8; col++) {
                 if ((row + col) % 2 == 0) {
                     board[row][col] = new Piece(Piece.Color.BLACK, "X", row, col);
-                    System.out.println("Initialized piece at (" + row + ", " + col + "): " + board[row][col]);
+                    //System.out.println("Initialized piece at (" + row + ", " + col + "): " + board[row][col]);
                 }
             }
         }
@@ -34,10 +33,49 @@ public class Board {
             for (int col = 0; col < 8; col++) {
                 if ((row + col) % 2 == 0) {
                     board[row][col] = new Piece(Piece.Color.WHITE, "O", row, col);
-                    System.out.println("Initialized piece at (" + row + ", " + col + "): " + board[row][col]);
+                    //System.out.println("Initialized piece at (" + row + ", " + col + "): " + board[row][col]);
                 }
             }
         }
+    }
+
+    /**
+     * Test constructor to intentionally handicap one side of the board to test game logic that determines winner.
+     * @param string the side of the board to favor
+     */
+
+    public Board(String s) {
+        board = new Piece[8][8];
+        
+        // Initialize the board with null values
+        for (int row = 0; row < 8; row++) {
+            for (int col = 0; col < 8; col++) {
+                board[row][col] = null;
+            }
+        }
+        
+        if (s.equals("X")) {
+            for (int row = 0; row < 3; row++) {
+                for (int col = 0; col < 8; col++) {
+                    if ((row + col) % 2 == 0) {
+                        board[row][col] = new Piece(Piece.Color.BLACK, "X", row, col);
+                        //System.out.println("Initialized piece at (" + row + ", " + col + "): " + board[row][col]);
+                    }
+                }
+            }
+        } else if (s.equals("O")) {
+            for (int row = 5; row < 8; row++) {
+                for (int col = 0; col < 8; col++) {
+                    if ((row + col) % 2 == 0) {
+                        board[row][col] = new Piece(Piece.Color.WHITE, "O", row, col);
+                        // System.out.println("Initialized piece at (" + row + ", " + col + "): " +
+                        // board[row][col]);
+                    }
+                }
+            }
+        }
+        
+        
     }
 
 
@@ -85,14 +123,18 @@ public class Board {
         for (int col = 0; col < 8; col++) {
             Piece piece = getPiece(0, col);
             if (piece != null && piece.getColor() == Piece.Color.WHITE) {
-                setPiece(0, col, new Piece(Piece.Color.WHITE_KING, "O", 0, col));
+                removePiece(0, col);
+                setPiece(0, col, new Piece(Piece.Color.WHITE_KING, "O*", 0, col));
+                System.out.printf("There's a new king at row %d and column %d for player 2! \n", 0, col);
             }
         }
     
         for (int col = 0; col < 8; col++) {
             Piece piece = getPiece(7, col);
             if (piece != null && piece.getColor() == Piece.Color.BLACK) {
-                setPiece(7, col, new Piece(Piece.Color.BLACK_KING, "X", 7, col));
+                removePiece(7, col);
+                setPiece(7, col, new Piece(Piece.Color.BLACK_KING, "X*", 7, col));
+                System.out.printf("There's a new king at row %d and column %d for player 1! \n", 7, col);
             }
         }
     }
@@ -123,6 +165,8 @@ public class Board {
         // Update the row and column of the moved piece
         piece.setRow(toRow);
         piece.setCol(toCol);
+
+        checkPiecesInRow0And7();
     }
 
     // Inside the Board class
@@ -155,6 +199,8 @@ public class Board {
         } else {
             board[fromRow + 1][fromCol + 1] = null;
         }
+
+        checkPiecesInRow0And7();
     }
 
 

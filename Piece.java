@@ -77,9 +77,9 @@ public class Piece {
         } else if (color == Color.WHITE) {
             return "O";
         } else if (color == Color.BLACK_KING) {
-            return "XX";
+            return "X*";
         } else if (color == Color.WHITE_KING) {
-            return "OO";
+            return "O*";
         } else {
             return "-";
         }
