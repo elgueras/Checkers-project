@@ -23,7 +23,7 @@ public class CheckersClient {
                         }
                         
                         // Prompt the user for input
-                        System.out.print("Your move (in the format 'move fromRow fromCol toRow toCol'): ");
+                        System.out.print("Your move (in the format 'move/jump fromRow fromCol toRow toCol'): ");
                         String move = consoleReader.readLine();
                         out.println(move);
                     } else {
@@ -31,7 +31,7 @@ public class CheckersClient {
                         System.out.println(response);
                     }
                     
-                    System.out.println("Received: " + response); // Debug
+                    //System.out.println("Received: " + response); // Debug
                 }
 
                 socket.close();

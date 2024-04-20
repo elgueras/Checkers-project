@@ -17,11 +17,6 @@ public class MoveProcessor {
         // Print out the piece and its color for debugging
         System.out.println("Piece at source position: " + piece + ", Color: " + piece.getColor());
     
-        // Check if the source position contains a piece
-        if (piece == null) {
-            throw new IllegalArgumentException("There is no piece to move at the specified position.");
-        }
-    
         // Move the piece on the board
         if (action.equalsIgnoreCase("move")) {
             board.movePiece(fromRow, fromCol, toRow, toCol);
