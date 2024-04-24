@@ -1,10 +1,13 @@
+// CheckersClient.java
 import java.io.*;
 import java.net.*;
 
+// Represents the client side of the checkers game
 public class CheckersClient {
     public static void main(String[] args) {
         boolean connected = false;
 
+        // Continuously attempt to connect to the server
         while (!connected) {
             try {
                 Socket socket = new Socket("localhost", 8080);

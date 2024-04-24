@@ -1,5 +1,8 @@
+// Piece.java
 
+// Represents a piece on the checkers board
 public class Piece {
+    // Enumeration of possible colors for a piece
     public enum Color {
         BLACK,
         WHITE,

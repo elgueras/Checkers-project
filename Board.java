@@ -1,7 +1,8 @@
+// Board.java
 import java.io.*;
 import java.util.Arrays;
 
-
+// Represents the game board for checkers
 public class Board {
 
     // The 2D array of Piece objects that represents the checkers board

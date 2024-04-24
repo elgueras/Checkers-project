@@ -1,5 +1,13 @@
+// MoveProcessor.java
+
+// Class responsible for processing player moves and updating the game board accordingly
 public class MoveProcessor {
 
+    /**
+     * Processes the player's move and updates the game board accordingly
+     * @param moveString the string representing the move
+     * @param board the game board
+     */
     public static void processMove(String moveString, Board board) {
         // Parse the moveString into action and coordinates
         String[] parts = moveString.split(" ");
